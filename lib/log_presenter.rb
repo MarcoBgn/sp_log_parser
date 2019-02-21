@@ -1,6 +1,7 @@
-# This class allows to present 
-# LogParser output data
+# frozen_string_literal: true
 
+# This class allows to present
+# LogParser output data
 class LogPresenter
   def initialize(visits_data:)
     @data = visits_data
@@ -33,5 +34,4 @@ class LogPresenter
   def log_unique(name, ips)
     puts "#{name} #{ips.uniq.count} unique visits"
   end
-
 end
