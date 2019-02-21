@@ -11,6 +11,9 @@ RSpec.describe LogPresenter do
 
     it 'prints out a list of names and total visits' do
       expect(STDOUT).to receive(:puts).with(
+        '------------------------'
+      )
+      expect(STDOUT).to receive(:puts).with(
         '/help_page/1 80 visits'
       )
       expect(STDOUT).to receive(:puts).with(
@@ -28,6 +31,10 @@ RSpec.describe LogPresenter do
       expect(STDOUT).to receive(:puts).with(
         '/about 81 visits'
       )
+      expect(STDOUT).to receive(:puts).with(
+        '------------------------'
+      )
+
       subject
     end
   end
@@ -36,6 +43,9 @@ RSpec.describe LogPresenter do
     subject { described_class.new(visits_data: from_parser).unique_visits }
 
     it 'prints out a list of paths and unique visits' do
+      expect(STDOUT).to receive(:puts).with(
+        '------------------------'
+      )
       expect(STDOUT).to receive(:puts).with(
         '/help_page/1 23 unique visits'
       )
@@ -53,6 +63,9 @@ RSpec.describe LogPresenter do
       )
       expect(STDOUT).to receive(:puts).with(
         '/about 21 unique visits'
+      )
+      expect(STDOUT).to receive(:puts).with(
+        '------------------------'
       )
       subject
     end
