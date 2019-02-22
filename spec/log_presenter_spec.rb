@@ -14,22 +14,22 @@ RSpec.describe LogPresenter do
         '------------------------'
       )
       expect(STDOUT).to receive(:puts).with(
-        '/help_page/1 80 visits'
+        '/about/2 90 visits'
       )
       expect(STDOUT).to receive(:puts).with(
         '/contact 89 visits'
-      )
-      expect(STDOUT).to receive(:puts).with(
-        '/home 78 visits'
-      )
-      expect(STDOUT).to receive(:puts).with(
-        '/about/2 90 visits'
       )
       expect(STDOUT).to receive(:puts).with(
         '/index 82 visits'
       )
       expect(STDOUT).to receive(:puts).with(
         '/about 81 visits'
+      )
+      expect(STDOUT).to receive(:puts).with(
+        '/help_page/1 80 visits'
+      )
+      expect(STDOUT).to receive(:puts).with(
+        '/home 78 visits'
       )
       expect(STDOUT).to receive(:puts).with(
         '------------------------'
@@ -56,10 +56,10 @@ RSpec.describe LogPresenter do
         '/home 23 unique visits'
       )
       expect(STDOUT).to receive(:puts).with(
-        '/about/2 22 unique visits'
+        '/index 23 unique visits'
       )
       expect(STDOUT).to receive(:puts).with(
-        '/index 23 unique visits'
+        '/about/2 22 unique visits'
       )
       expect(STDOUT).to receive(:puts).with(
         '/about 21 unique visits'

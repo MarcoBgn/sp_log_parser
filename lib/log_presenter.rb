@@ -10,15 +10,21 @@ class LogPresenter
   end
 
   def total_visits
-    grouped_by_name.each.with_index do |(name, ips), index|
-      around_entry(index) { log_total(name, ips) }
-    end
+    grouped_by_name
+      .sort_by(&sort_proc)
+      .reverse_each
+      .with_index do |(name, ips), index|
+        around_entry(index) { log_total(name, ips) }
+      end
   end
 
   def unique_visits
-    grouped_by_name.each.with_index do |(name, ips), index|
-      around_entry(index) { log_unique(name, ips) }
-    end
+    grouped_by_name
+      .sort_by(&sort_proc(uniq: true))
+      .reverse_each
+      .with_index do |(name, ips), index|
+        around_entry(index) { log_unique(name, ips) }
+      end
   end
 
   private
@@ -27,6 +33,10 @@ class LogPresenter
     @grouped_by_name ||= @data.group_by do |visit|
       visit[:path]
     end
+  end
+
+  def sort_proc(uniq: false)
+    proc { |_, ips| uniq ? ips.send(:uniq).count : ips.count }
   end
 
   def log_total(name, ips)
